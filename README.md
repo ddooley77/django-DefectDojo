@@ -1,3 +1,38 @@
+# RapidFort
+
+[RapidFort](https://www.rapidfort.com/) is a solution for building secure, optimized Docker containers.
+This fork of DefectDojo will use container images optimized by he RapidFort Build-Time product instead of the original images.
+This public use case optimizes an entire platform (DefectDojo) instead of indvidual images often found in the [RapidFort Community](https://github.com/rapidfort/community-images).
+
+### Usage:
+Exactly the same as before.
+
+Only docker-compose was updated to use the optimized images e.g.
+```
+>     image: "defectdojo/defectdojo-django:${DJANGO_VERSION:-latest}"
+97,99c86
+<     image: "defectdojo/defectdojo-django:latest-rfhardened"
+
+```
+
+### DefectDojo was chosen because:
+* RapidFort would like to contribute to Open Source and OWASP.
+* Dojo easy to deploy.
+* Dojo is easy to test.
+    * It already has integration tests and unit tests in the project
+    * (This saves a couple hours creating a coverage script).
+* A RapidFort Customer asked could we do this (amongst other platforms).
+* An initial RapidFort scan showed that there could be large savings, especially in the main python defectdojo-django image.
+* The Dojo team is already security savvy.  As an example, when it comes to container images they use in the platform, they go for the alpine variants.  Hopefully we can incorporate RapidFort into their tooling.
+
+### Goals:
+* Create a smaller, more secure version (less CVEs and smaller attack surface) of DefectDojo.
+* Make it available for public consumption and gain feedback from end-users.
+* Longer term if this has value, we could create a pipeline for any new DefectDojo version and hopefully partner with the OWASP team on this.
+
+### Steps:
+* TBD
+
 # DefectDojo
 
 <table>
