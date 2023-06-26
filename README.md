@@ -38,24 +38,25 @@ TBD
    ```
    xargs -0 -n 1 rfstub < <(tr \\n \\0 <image_list.txt)
    ```
-3. Update docker-compose.yml and docker-compose.override.integration_tests.yml with rfstubbed versions.
-4. Run with postgres/mysql options, click around the UI
-5. Run existing test cases
+2. Update docker-compose.yml and docker-compose.override.integration_tests.yml with rfstubbed versions.
+3. Run with postgres/mysql options, click around the UI
+4. Run existing test cases
    ```
    docker/setEnv.sh unit_tests
    ./dc-up.sh 
    ./dc-up.sh mysql-rabbitmq
-
    docker/setEnv.sh integration_tests
    ./dc-up.sh
    ./dc-up.sh mysql-rabbitmq
-  ```
-7. RapidFort optimize (rfharden) all containers
+   ```
+5. RapidFort optimize (rfharden) all containers
    ```
    xargs -0 -n 1 rfharden < <(tr \\n \\0 < image_list_stubbed.txt)
    ```
-8. Update docker-compose.yml and docker-compose.override.integration_tests.yml with the RapidFort optimized versions (rfhardened).
-9. Re-run postgres/mysql options, click around the UI, check it all looks good.
+6. Update docker-compose.yml and docker-compose.override.integration_tests.yml with the RapidFort optimized versions (rfhardened).
+7. Sanity Check - re-run postgres/mysql options, click around the UI, check it all looks good.
+
+
 
 # DefectDojo
 
