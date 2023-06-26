@@ -56,7 +56,7 @@ TBD
 6. Update docker-compose.yml and docker-compose.override.integration_tests.yml with the RapidFort optimized versions (rfhardened).
 7. Sanity Check - re-run postgres/mysql options, click around the UI, check it all looks good.
 
-
+-----------------
 
 # DefectDojo
 
