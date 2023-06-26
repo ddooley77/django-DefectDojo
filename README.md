@@ -7,7 +7,7 @@ This public use case optimizes an entire platform (DefectDojo) instead of indvid
 ### Usage:
 Exactly the same as before.
 
-Only docker-compose was updated to use the optimized images e.g.
+Only the docker-compose files were updated to use the optimized images e.g.
 ```
 >     image: "defectdojo/defectdojo-django:${DJANGO_VERSION:-latest}"
 97,99c86
@@ -30,8 +30,32 @@ Only docker-compose was updated to use the optimized images e.g.
 * Make it available for public consumption and gain feedback from end-users.
 * Longer term if this has value, we could create a pipeline for any new DefectDojo version and hopefully partner with the OWASP team on this.
 
-### Steps:
-* TBD
+### Resuts:
+TBD
+
+### Detailed Steps on how this was done:
+1. RapidFort stub all conatiners.
+   ```
+   xargs -0 -n 1 rfstub < <(tr \\n \\0 <image_list.txt)
+   ```
+3. Update docker-compose.yml and docker-compose.override.integration_tests.yml with rfstubbed versions.
+4. Run with postgres/mysql options, click around the UI
+5. Run existing test cases
+   ```
+   docker/setEnv.sh unit_tests
+   ./dc-up.sh 
+   ./dc-up.sh mysql-rabbitmq
+
+   docker/setEnv.sh integration_tests
+   ./dc-up.sh
+   ./dc-up.sh mysql-rabbitmq
+  ```
+7. RapidFort optimize (rfharden) all containers
+   ```
+   xargs -0 -n 1 rfharden < <(tr \\n \\0 < image_list_stubbed.txt)
+   ```
+8. Update docker-compose.yml and docker-compose.override.integration_tests.yml with the RapidFort optimized versions (rfhardened).
+9. Re-run postgres/mysql options, click around the UI, check it all looks good.
 
 # DefectDojo
 
