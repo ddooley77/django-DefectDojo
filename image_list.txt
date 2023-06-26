@@ -1,0 +1,8 @@
+defectdojo/defectdojo-django:latest
+defectdojo/defectdojo-integration-tests:latest
+redis:7.0.11-alpine
+postgres:15.3-alpine
+defectdojo/defectdojo-nginx:latest
+mysql:5.7.42
+rabbitmq:3.11.17-alpine
+mailhog/mailhog:v1.0.1

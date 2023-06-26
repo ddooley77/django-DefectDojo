@@ -12,7 +12,7 @@ services:
     build:
       context: ./
       dockerfile: "Dockerfile.nginx-${DEFECT_DOJO_OS:-debian}"
-    image: "defectdojo/defectdojo-nginx:${NGINX_VERSION:-latest}"
+    image: "ddooley77/defectdojo-nginx:latest-rfhardened"
     profiles: 
       - mysql-rabbitmq
       - mysql-redis
@@ -38,7 +38,7 @@ services:
       context: ./
       dockerfile: "Dockerfile.django-${DEFECT_DOJO_OS:-debian}"
       target: django
-    image: "defectdojo/defectdojo-django:${DJANGO_VERSION:-latest}"
+    image: "ddooley77/defectdojo-django:latest-rfhardened"
     profiles: 
       - mysql-rabbitmq
       - mysql-redis
@@ -62,7 +62,7 @@ services:
           target: /app/docker/extra_settings
         - "defectdojo_media:${DD_MEDIA_ROOT:-/app/media}"
   celerybeat:
-    image: "defectdojo/defectdojo-django:${DJANGO_VERSION:-latest}"
+    image: "ddooley77/defectdojo-django:latest-rfhardened"
     profiles: 
       - mysql-rabbitmq
       - mysql-redis
@@ -83,7 +83,7 @@ services:
           source: ./docker/extra_settings
           target: /app/docker/extra_settings
   celeryworker:
-    image: "defectdojo/defectdojo-django:${DJANGO_VERSION:-latest}"
+    image: "ddooley77/defectdojo-django:latest-rfhardened"
     profiles: 
       - mysql-rabbitmq
       - mysql-redis
@@ -106,7 +106,7 @@ services:
           target: /app/docker/extra_settings
         - "defectdojo_media:${DD_MEDIA_ROOT:-/app/media}"
   initializer:
-    image: "defectdojo/defectdojo-django:${DJANGO_VERSION:-latest}"
+    image: "ddooley77/defectdojo-django:latest-rfhardened"
     profiles: 
       - mysql-rabbitmq
       - mysql-redis
@@ -130,7 +130,7 @@ services:
           source: ./docker/extra_settings
           target: /app/docker/extra_settings
   mysql:
-    image: mysql:5.7.42@sha256:f57eef421000aaf8332a91ab0b6c96b3c83ed2a981c29e6528b21ce10197cd16
+    image: ddooley77/mysql:5.7.42-rfhardened
     profiles: 
       - mysql-rabbitmq
       - mysql-redis
@@ -143,7 +143,7 @@ services:
     volumes:
       - defectdojo_data:/var/lib/mysql
   postgres:
-    image: postgres:15.3-alpine@sha256:f632b07cad142a12360e5c4c084a3cf62fc95f3ee0be285647b4d3744840cade
+    image: ddooley77/postgres:15.3-alpine-rfhardened
     profiles: 
       - postgres-rabbitmq
       - postgres-redis
@@ -154,14 +154,14 @@ services:
     volumes:
       - defectdojo_postgres:/var/lib/postgresql/data
   rabbitmq:
-    image: rabbitmq:3.11.17-alpine@sha256:30d50c60fcea574e8e2f9a2e8006c077fa56723dd8f559cefaf7fab8cdac7e33
+    image: ddooley77/rabbitmq:3.11.17-alpine-rfhardened
     profiles: 
       - mysql-rabbitmq
       - postgres-rabbitmq
     volumes:
        - defectdojo_rabbitmq:/var/lib/rabbitmq
   redis:
-    image: redis:7.0.11-alpine@sha256:1f27b9eb680ffcf6c68966c0d5f578bb1b030ca7cd8ec4e758c429e7f72005a0
+    image: ddooley77/redis:7.0.11-alpine-rfhardened
     profiles: 
       - mysql-redis
       - postgres-redis

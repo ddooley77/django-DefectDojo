@@ -1,0 +1,8 @@
+defectdojo/defectdojo-django:latest-rfstub
+defectdojo/defectdojo-integration-tests:latest-rfstub
+redis:7.0.11-alpine-rfstub
+postgres:15.3-alpine-rfstub
+defectdojo/defectdojo-nginx:latest-rfstub
+mysql:5.7.42-rfstub
+rabbitmq:3.11.17-alpine-rfstub
+mailhog/mailhog:v1.0.1-rfstub
