@@ -1,11 +1,16 @@
 # RapidFort
 
 [RapidFort](https://www.rapidfort.com/) is a solution for building secure, optimized Docker containers.
-This fork of DefectDojo will use container images optimized by he RapidFort Build-Time product instead of the original images.
+This fork of DefectDojo will use container images optimized by the RapidFort Build-Time product instead of the original images.
 This public use case optimizes an entire platform (DefectDojo) instead of indvidual images often found in the [RapidFort Community](https://github.com/rapidfort/community-images).
 
+### Resuts:
+[Trivy](https://github.com/aquasecurity/trivy) was used to count CVEs before and after RapidFort optimization instead of RapidFort reporting how great RapidFort is.
+![Optimization Summary](https://github.com/ddooley77/django-DefectDojo/blob/master/media/DefectDojo_Summary.png)
+
 ### Usage:
-Exactly the same as before.
+Exactly the same as before. The original README is below.
+
 
 Only the docker-compose files were updated to use the optimized images e.g.
 ```
@@ -14,6 +19,16 @@ Only the docker-compose files were updated to use the optimized images e.g.
 <     image: "defectdojo/defectdojo-django:latest-rfhardened"
 
 ```
+
+```sh
+git clone https://github.com/ddooley77/django-DefectDojo
+cd django-DefectDojo
+./dc-up.sh postgres-redis
+# obtain admin credentials. the initializer can take up to 3 minutes to run
+# use docker-compose logs -f initializer to track progress
+docker-compose logs initializer | grep "Admin password:"
+```
+
 
 ### DefectDojo was chosen because:
 * RapidFort would like to contribute to Open Source and OWASP.
@@ -30,8 +45,6 @@ Only the docker-compose files were updated to use the optimized images e.g.
 * Make it available for public consumption and gain feedback from end-users.
 * Longer term if this has value, we could create a pipeline for any new DefectDojo version and hopefully partner with the OWASP team on this.
 
-### Resuts:
-TBD
 
 ### Detailed Steps on how this was done:
 1. RapidFort stub all conatiners.
