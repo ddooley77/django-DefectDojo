@@ -1,7 +1,7 @@
 # RapidFort
 
 [RapidFort](https://www.rapidfort.com/) is a solution for building secure, optimized Docker containers.
-This fork of DefectDojo will use container images optimized by the RapidFort Build-Time product instead of the original images.
+This fork of DefectDojo uses container images optimized by the RapidFort Build-Time product instead of the original images.
 This public use case optimizes an entire platform (DefectDojo) instead of indvidual images often found in the [RapidFort Community](https://github.com/rapidfort/community-images).
 
 ### Resuts:
