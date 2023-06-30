@@ -6,6 +6,8 @@ This public use case optimizes an entire platform (DefectDojo) instead of indvid
 
 ### Resuts:
 [Trivy](https://github.com/aquasecurity/trivy) was used to count CVEs before and after RapidFort optimization instead of RapidFort reporting how great RapidFort is.
+
+
 ![Optimization Summary](https://github.com/ddooley77/django-DefectDojo/blob/master/media/DefectDojo_Summary.png)
 
 ### Usage:
