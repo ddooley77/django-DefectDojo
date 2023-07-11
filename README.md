@@ -49,7 +49,7 @@ docker-compose logs initializer | grep "Admin password:"
 
 
 ### Detailed Steps on how this was done:
-1. RapidFort stub all conatiners.
+1. RapidFort stub all containers.
    ```
    xargs -0 -n 1 rfstub < <(tr \\n \\0 <image_list.txt)
    ```
