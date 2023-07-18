@@ -34,7 +34,7 @@ docker-compose logs initializer | grep "Admin password:"
 
 ### DefectDojo was chosen because:
 * RapidFort would like to contribute to Open Source and OWASP.
-* Dojo easy to deploy.
+* Dojo is easy to deploy.
 * Dojo is easy to test.
     * It already has integration tests and unit tests in the project
     * (This saves a couple hours creating a coverage script).
